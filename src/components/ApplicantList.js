@@ -47,7 +47,7 @@ const ApplicantList = ({ title, rejected, applicants, setApplicants, handleRemov
       phone: '',
       status: 'New',
       photo: '',
-      followUp: ''
+      followUp: 'followed'
     });
   };
 

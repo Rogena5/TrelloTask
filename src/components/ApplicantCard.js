@@ -43,10 +43,10 @@ const ApplicantCard = ({ applicant, index, moveCard, setApplicants, applicants }
             </div>
          </div>
            
-            <div className="flex md:flex-row flex-col md:items-center md:space-x-2 space-y-2 mt-3 md:mt-2">
-              <div className="md:text-sm text-xs bg-slate-100 py-1 px-2 rounded-lg">{rating} ⭐</div>
-              <div className="w-1/3 md:text-sm text-xs text-gray-400 font-normal">{phone}</div>
-              <div className="w-1/3 text-center bg-blue-600 text-white md:text-xs text-xs rounded-lg px-2 py-1">{followUp}</div>
+            <div className="flex md:flex-row gap-5 flex-wrap items-center md:space-x-2 space-y-2 mt-3 md:mt-2">
+              <div className="flex items-center gap-1 text-center bg-slate-200 text-xs rounded-lg px-2 py-1 mt-1">{rating}<span>⭐⭐</span></div>
+              <div className="text-slate-400 text-base rounded-lg px-2 py-1">{phone}</div>
+              <div className="text-center bg-blue-600 text-white  text-xs rounded-lg px-2 py-1">{followUp}</div>
             </div>
           </div>
         </div>
