@@ -80,7 +80,7 @@ const ApplicantList = ({ title, rejected, applicants, setApplicants, handleRemov
   };
 
   return (
-    <div ref={drop} className="bg-gray-100 rounded-lg p-5 pb-16 md:my-10 my-5">
+    <div ref={drop} className="bg-gray-100 rounded-2xl p-5 pb-16 md:my-10 my-5">
       <div className="mb-4">
         <div className="flex flex-wrap md:flex-row justify-between space-y-2 md:space-y-0 md:items-center mb-4">
           <div className="font-semibold text-base md:text-lg flex items-center gap-1"> <MdCheckBoxOutlineBlank className='text-gray-300' size={20}/>{title}</div>
@@ -94,12 +94,12 @@ const ApplicantList = ({ title, rejected, applicants, setApplicants, handleRemov
 
         <div className="flex flex-col sm:flex-row justify-between mb-4">
           <div className='flex items-center space-x-2'>
-            <span className="font-bold md:text-3xl text-base"> {rejected}</span> 
-            <span className="font-semibold md:text-base text-sm text-gray-400">REJECTED</span>
+            <span className="font-bold md:text-2xl text-base"> {rejected}</span> 
+            <span className="font-semibold md:text-sm text-gray-400">REJECTED</span>
           </div>
           <div className="flex items-center space-x-2 mt-2 sm:mt-0">
-            <span className="font-bold md:text-3xl text-base">  {applicants.length} </span>
-             <span className="font-semibold md:text-base text-sm text-gray-400">TOTAL</span>
+            <span className="font-bold md:text-2xl text-base">  {applicants.length} </span>
+             <span className="font-semibold md:text-sm text-gray-400">TOTAL</span>
           </div>
         </div>
         <div className={`h-1 my-2 rounded ${color}`}></div>

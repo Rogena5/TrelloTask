@@ -1,5 +1,6 @@
 import React from 'react';
 import { useDrag, useDrop } from 'react-dnd';
+import { FaSignal } from "react-icons/fa";
 
 const ApplicantCard = ({ applicant, index, moveCard, setApplicants, applicants }) => {
   const { name, location, rating, phone, status,followUp, photo } = applicant;
@@ -10,7 +11,7 @@ const ApplicantCard = ({ applicant, index, moveCard, setApplicants, applicants }
       isDragging: monitor.isDragging(),
     }),
   });
-  
+
   const [, drop] = useDrop({
     accept: 'APPLICANT',
     hover(item, monitor) {
@@ -23,19 +24,19 @@ const ApplicantCard = ({ applicant, index, moveCard, setApplicants, applicants }
 
   return (
     <>
-      <div ref={(node) => drag(drop(node))}  className={`p-3 rounded-lg ${
+      <div ref={(node) => drag(drop(node))}  className={`p-3 rounded-lg cursor-grabbing ${
         isDragging ? 'border-2 border-dashed border-gray-300 bg-gray-200' : ''
       }`}>
-        <div className='bg-white p-4 rounded-lg'>
+        <div className='bg-white p-4 rounded-2xl'>
           <div>
-         <div className='flex flex-col md:flex-row items-start md:items-center space-y-2 md:space-y-0 md:space-x-2'>
+         <div className='flex flex-col md:flex-row items-start space-y-2 md:space-y-0 md:space-x-2'>
          <div>
-              {photo && <img src={photo} alt={`${name}'s photo`} className="w-9 h-9 rounded-md" />}
+              {photo && <img src={photo} alt={`${name}'s photo`} className="w-12 h-12 rounded-md" />}
             </div>
 
             <div className="flex flex-col space-y-1">
               <div className="flex items-center space-x-5">
-                <div className="font-bold md:text-base text-sm">{name}</div>
+                <div className="flex items-center gap-2 font-bold md:text-base text-sm"><FaSignal className='text-blue-400' size={15}/> {name}</div>
                 <div className="bg-[#e0e7ff] text-blue-600 text-xs rounded-lg px-2 py-1">{status}</div>
               </div>
               <div className="md:text-sm text-xs text-gray-400 font-semibold">{location}</div>

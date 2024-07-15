@@ -5,15 +5,15 @@ import ApplicantList from './components/ApplicantList';
 
 const App = () => {
   const [appliedApplicants, setAppliedApplicants] = useState([
-    { name: 'Silvano Scally', location: 'New York', rating: 4.0, phone: '561 682 5290', status: 'New', followUp: 'Followed', photo: '' },
+    { name: 'Silvano Scally', location: 'New York', rating: 4.0, phone: '561 682 5290', status: 'New', followUp: 'Followed', photo: '', color: 'text-red-500' },
   ]);
 
   const [shortlistedApplicants, setShortlistedApplicants] = useState([
-    { name: 'Lamar Demet', location: 'Saint Augustine', rating: 5.0, phone: '350 947 8496', status: 'New',followUp: 'Followed', photo: '' },
+    { name: 'Lamar Demet', location: 'Saint Augustine', rating: 5.0, phone: '350 947 8496', status: 'New',followUp: 'Followed', photo: '',color: 'text-red-500' },
   ]);
 
   const [interviewApplicants, setInterviewApplicants] = useState([
-    { name: 'Davina Olkowicz', location: 'Dongpu', rating: 4.0, phone: '214 894 2712', status: 'NotNew',followUp: 'NotFollowed', photo: '' },
+    { name: 'Davina Olkowicz', location: 'Dongpu', rating: 4.0, phone: '214 894 2712', status: 'NotNew',followUp: 'NotFollowed', photo: '', color: 'text-red-500' },
   ]);
 
   const handleRemoveApplicant = (applicant, setList) => {
