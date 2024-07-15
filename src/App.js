@@ -30,8 +30,8 @@ const App = () => {
 
   return (
     <DndProvider backend={HTML5Backend}>
-      <div className="flex flex-col lg:flex-row justify-between w-3/4 mx-auto">
-        <ApplicantList
+      <div className="flex flex-col md:flex-row md:space-x-2 justify-center items-start mx-auto w-full">
+      <div className="w-full md:w-1/3 p-4"> <ApplicantList
           title="Applied"
           rejected={8}
           applicants={appliedApplicants}
@@ -39,7 +39,8 @@ const App = () => {
           handleRemoveApplicant={handleRemoveApplicant}
           moveCard={moveCard}
           color="bg-blue-400"
-        />
+        /></div>
+        <div className="w-full md:w-1/3 p-4">
         <ApplicantList
           title="Shortlisted"
           rejected={9}
@@ -48,8 +49,9 @@ const App = () => {
           handleRemoveApplicant={handleRemoveApplicant}
           moveCard={moveCard}
           color="bg-green-400"
-        />
-        <ApplicantList
+        /> 
+        </div>
+        <div className="w-full md:w-1/3 p-4"> <ApplicantList
           title="Interview"
           rejected={1}
           applicants={interviewApplicants}
@@ -57,7 +59,7 @@ const App = () => {
           handleRemoveApplicant={handleRemoveApplicant}
           moveCard={moveCard}
           color="bg-red-400"
-        />
+        /></div>
       </div>
     </DndProvider>
   );

@@ -12,9 +12,9 @@ const ApplicantList = ({ title, rejected, applicants, setApplicants, handleRemov
     phone: '',
     status: 'New',
     photo: '',
-    followUp:'followed'
+    followUp: 'followed'
   });
-  const [sortOrder, setSortOrder] = useState('asc'); 
+  const [sortOrder, setSortOrder] = useState('asc');
 
   const handleAddClick = () => {
     setShowModal(true);
@@ -47,7 +47,7 @@ const ApplicantList = ({ title, rejected, applicants, setApplicants, handleRemov
       phone: '',
       status: 'New',
       photo: '',
-      followUp:''
+      followUp: ''
     });
   };
 
@@ -80,26 +80,26 @@ const ApplicantList = ({ title, rejected, applicants, setApplicants, handleRemov
   };
 
   return (
-    <div ref={drop} className="bg-gray-100 rounded-lg p-10 pb-20 my-10 h-min">
+    <div ref={drop} className="bg-gray-100 rounded-lg p-5 pb-16 md:my-10 my-5">
       <div className="mb-4">
-        <div className="flex space-x-5 items-center mb-4">
-          <div className="font-bold text-lg">{title}</div>
-          <div>
-            <button className="text-blue-600 bg-[#e0e7ff] font-bold pointer px-2 py-1 rounded-3xl" onClick={handleAddClick}>
+        <div className="flex flex-wrap md:flex-row justify-between space-y-2 md:space-y-0 md:items-center mb-4">
+          <div className="font-semibold text-base md:text-lg">{title}</div>
+          <button className="text-blue-600 text-xs md:text-sm bg-blue-100 font-semibold px-2 py-1 rounded-xl" onClick={handleAddClick}>
               + Add Applicants
             </button>
-          </div>
-          <div onClick={handleSort} className="cursor-pointer">
+            <div onClick={handleSort} className="cursor-pointer">
             <FaSortAmountDown />
           </div>
         </div>
-      
-        <div className="flex justify-between mb-4">
-          <div className="text-base font-bold">
-            {rejected} <span className="text-gray-400">Rejected</span>
+
+        <div className="flex flex-col sm:flex-row justify-between mb-4">
+          <div className='flex items-center space-x-3'>
+            <span className="font-bold md:text-3xl text-base"> {rejected}</span> 
+            <span className="font-semibold md:text-base text-sm text-gray-400">REJECTED</span>
           </div>
-          <div className="text-base font-bold">
-            {applicants.length} <span className="text-gray-400">Total</span>
+          <div className="flex items-center space-x-3 mt-2 sm:mt-0">
+            <span className="font-bold md:text-3xl text-base">  {applicants.length} </span>
+             <span className="font-semibold md:text-base text-sm text-gray-400">Total</span>
           </div>
         </div>
         <div className={`h-1 my-2 rounded ${color}`}></div>
@@ -118,12 +118,12 @@ const ApplicantList = ({ title, rejected, applicants, setApplicants, handleRemov
       </div>
       {showModal && (
         <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
-          <div className="bg-white p-6 rounded-lg shadow-lg w-1/4 mx-auto">
-            <h2 className="text-2xl font-semibold mb-4">Add New Applicant</h2>
+          <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md mx-4 sm:mx-auto">
+            <h2 className="md:text-2xl text-base font-semibold mb-4">Add New Applicant</h2>
             <form onSubmit={handleFormSubmit}>
               <div className="mb-2">
                 <input
-                  className="w-full px-3 py-2 border rounded-lg"
+                  className="w-full md:text-base text-sm px-3 py-2 border rounded-lg"
                   type="text"
                   name="name"
                   placeholder="name"
@@ -134,7 +134,7 @@ const ApplicantList = ({ title, rejected, applicants, setApplicants, handleRemov
               </div>
               <div className="mb-2">
                 <input
-                  className="w-full px-3 py-2 border rounded-lg"
+                  className="w-full md:text-base text-sm px-3 py-2 border rounded-lg"
                   type="text"
                   name="location"
                   placeholder="location"
@@ -145,7 +145,7 @@ const ApplicantList = ({ title, rejected, applicants, setApplicants, handleRemov
               </div>
               <div className="mb-2">
                 <input
-                  className="w-full px-3 py-2 border rounded-lg"
+                  className="w-full md:text-base text-sm px-3 py-2 border rounded-lg"
                   type="number"
                   name="rating"
                   placeholder="rating"
@@ -156,7 +156,7 @@ const ApplicantList = ({ title, rejected, applicants, setApplicants, handleRemov
               </div>
               <div className="mb-2">
                 <input
-                  className="w-full px-3 py-2 border rounded-lg"
+                  className="w-full md:text-base text-sm px-3 py-2 border rounded-lg"
                   type="text"
                   name="phone"
                   placeholder="phone"
@@ -167,7 +167,7 @@ const ApplicantList = ({ title, rejected, applicants, setApplicants, handleRemov
               </div>
               <div className="mb-2">
                 <input
-                  className="w-full px-3 py-2 border rounded-lg"
+                  className="w-full md:text-base text-sm px-3 py-2 border rounded-lg"
                   type="file"
                   name="photo"
                   onChange={handleFileChange}
@@ -175,7 +175,7 @@ const ApplicantList = ({ title, rejected, applicants, setApplicants, handleRemov
               </div>
               <div className="mb-2">
                 <select
-                  className="w-full px-3 py-2 border rounded-lg"
+                  className="w-full md:text-base text-sm px-3 py-2 border rounded-lg"
                   name="status"
                   value={newApplicant.status}
                   onChange={handleInputChange}
@@ -189,7 +189,7 @@ const ApplicantList = ({ title, rejected, applicants, setApplicants, handleRemov
               </div>
               <div className="mb-2">
                 <select
-                  className="w-full px-3 py-2 border rounded-lg"
+                  className="w-full md:text-base text-sm px-3 py-2 border rounded-lg"
                   name="followUp"
                   value={newApplicant.followUp}
                   onChange={handleInputChange}
