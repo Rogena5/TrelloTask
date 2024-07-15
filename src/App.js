@@ -1,34 +1,65 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
 import ApplicantList from './components/ApplicantList';
 
 const App = () => {
-  const appliedApplicants = [
-    { name: 'Silvano Scally', location: 'New York', rating: 4.0, phone: '561 682 5290', status: 'New' },
-    { name: 'Lamar Demet', location: 'Saint Augustine', rating: 5.0, phone: '282 645 1513', status: 'New' },
-    { name: 'Ramsey Jantzen', location: 'Rome', rating: 5.0, phone: '357 875 0394' },
-    { name: 'Lorine Brailsford', location: 'Warsaw', rating: 4.0, phone: '282 645 1513', status: 'Followed' },
-  ];
+  const [appliedApplicants, setAppliedApplicants] = useState([
+    { name: 'Silvano Scally', location: 'New York', rating: 4.0, phone: '561 682 5290', status: 'New', followUp: 'Followed', photo: '' },
+  ]);
 
-  const shortlistedApplicants = [
-    { name: 'Lamar Demet', location: 'Saint Augustine', rating: 5.0, phone: '350 947 8496', status: 'New' },
-    { name: 'Torey Courtes', location: 'Bogota', rating: 3.0, phone: '282 645 1513', status: 'New' },
-    { name: 'Pietra Mallinder', location: 'San Francisco', rating: 4.0, phone: '526 481 1324', status: 'Followed' },
-    { name: 'Karilynn Instonssen', location: 'Stockholm', rating: 5.0, phone: '248 230 6575' },
-  ];
+  const [shortlistedApplicants, setShortlistedApplicants] = useState([
+    { name: 'Lamar Demet', location: 'Saint Augustine', rating: 5.0, phone: '350 947 8496', status: 'New',followUp: 'Followed', photo: '' },
+  ]);
 
-  const interviewApplicants = [
-    { name: 'Davina Olkowicz', location: 'Dongpu', rating: 4.0, phone: '214 894 2712' },
-    { name: 'Ajay MacAllast', location: 'Tokyo', rating: 5.0, phone: '754 742 7248', status: 'New' },
-    { name: 'Blondy Leel', location: 'Berlin', rating: 4.0, phone: '526 481 1324' },
-    { name: 'Lorine Brailsford', location: 'Warsaw', rating: 4.0, phone: '282 645 1513', status: 'Followed' },
-  ];
+  const [interviewApplicants, setInterviewApplicants] = useState([
+    { name: 'Davina Olkowicz', location: 'Dongpu', rating: 4.0, phone: '214 894 2712', status: 'NotNew',followUp: 'NotFollowed', photo: '' },
+  ]);
+
+  const handleRemoveApplicant = (applicant, setList) => {
+    setList((prev) => prev.filter((item) => item.name !== applicant.name));
+  };
+
+  const moveCard = (dragIndex, hoverIndex, list, setList) => {
+    const draggedApplicant = list[dragIndex];
+    const newApplicants = [...list];
+    newApplicants.splice(dragIndex, 1);
+    newApplicants.splice(hoverIndex, 0, draggedApplicant);
+    setList(newApplicants);
+  };
 
   return (
-    <div className="flex flex-col lg:flex-row justify-between w-3/4 mx-auto">
-      <ApplicantList title="Applied" rejected={8} total={24} applicants={appliedApplicants} />
-      <ApplicantList title="Shortlisted" rejected={9} total={16} applicants={shortlistedApplicants} />
-      <ApplicantList title="Interview" rejected={1} total={7} applicants={interviewApplicants} />
-    </div>
+    <DndProvider backend={HTML5Backend}>
+      <div className="flex flex-col lg:flex-row justify-between w-3/4 mx-auto">
+        <ApplicantList
+          title="Applied"
+          rejected={8}
+          applicants={appliedApplicants}
+          setApplicants={setAppliedApplicants}
+          handleRemoveApplicant={handleRemoveApplicant}
+          moveCard={moveCard}
+          color="bg-blue-400"
+        />
+        <ApplicantList
+          title="Shortlisted"
+          rejected={9}
+          applicants={shortlistedApplicants}
+          setApplicants={setShortlistedApplicants}
+          handleRemoveApplicant={handleRemoveApplicant}
+          moveCard={moveCard}
+          color="bg-green-400"
+        />
+        <ApplicantList
+          title="Interview"
+          rejected={1}
+          applicants={interviewApplicants}
+          setApplicants={setInterviewApplicants}
+          handleRemoveApplicant={handleRemoveApplicant}
+          moveCard={moveCard}
+          color="bg-red-400"
+        />
+      </div>
+    </DndProvider>
   );
 };
 
