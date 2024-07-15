@@ -3,12 +3,14 @@ import { useDrag, useDrop } from 'react-dnd';
 
 const ApplicantCard = ({ applicant, index, moveCard, setApplicants, applicants }) => {
   const { name, location, rating, phone, status,followUp, photo } = applicant;
-
-  const [, drag] = useDrag({
+  const [{ isDragging }, drag] = useDrag({
     type: 'APPLICANT',
     item: { ...applicant, index, sourceSetApplicants: setApplicants },
+    collect: (monitor) => ({
+      isDragging: monitor.isDragging(),
+    }),
   });
-
+  
   const [, drop] = useDrop({
     accept: 'APPLICANT',
     hover(item, monitor) {
@@ -21,8 +23,10 @@ const ApplicantCard = ({ applicant, index, moveCard, setApplicants, applicants }
 
   return (
     <>
-      <div ref={(node) => drag(drop(node))} className="bg-white p-4 rounded-lg mb-2">
-        <div>
+      <div ref={(node) => drag(drop(node))}  className={`p-3 rounded-lg ${
+        isDragging ? 'border-2 border-dashed border-gray-300 bg-gray-200' : ''
+      }`}>
+        <div className='bg-white p-4 rounded-lg'>
           <div>
          <div className='flex flex-col md:flex-row items-start md:items-center space-y-2 md:space-y-0 md:space-x-2'>
          <div>

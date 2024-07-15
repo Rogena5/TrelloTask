@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDrop } from 'react-dnd';
 import ApplicantCard from './ApplicantCard';
 import { FaSortAmountDown, FaSortAmountUp } from "react-icons/fa";
-
+import { MdCheckBoxOutlineBlank } from "react-icons/md";
 const ApplicantList = ({ title, rejected, applicants, setApplicants, handleRemoveApplicant, moveCard, color }) => {
   const [showModal, setShowModal] = useState(false);
   const [newApplicant, setNewApplicant] = useState({
@@ -83,23 +83,23 @@ const ApplicantList = ({ title, rejected, applicants, setApplicants, handleRemov
     <div ref={drop} className="bg-gray-100 rounded-lg p-5 pb-16 md:my-10 my-5">
       <div className="mb-4">
         <div className="flex flex-wrap md:flex-row justify-between space-y-2 md:space-y-0 md:items-center mb-4">
-          <div className="font-semibold text-base md:text-lg">{title}</div>
+          <div className="font-semibold text-base md:text-lg flex items-center gap-1"> <MdCheckBoxOutlineBlank className='text-gray-300' size={20}/>{title}</div>
           <button className="text-blue-600 text-xs md:text-sm bg-blue-100 font-semibold px-2 py-1 rounded-xl" onClick={handleAddClick}>
             + Add Applicants
           </button>
           <div onClick={handleSort} className="cursor-pointer">
-            {sortOrder === 'asc' ? <FaSortAmountDown /> : <FaSortAmountUp />}
+            {sortOrder === 'asc' ? <FaSortAmountDown className='text-gray-300' size={20}/> : <FaSortAmountUp className='text-gray-300' size={20}/>}
           </div>
         </div>
 
         <div className="flex flex-col sm:flex-row justify-between mb-4">
-          <div className='flex items-center space-x-3'>
+          <div className='flex items-center space-x-2'>
             <span className="font-bold md:text-3xl text-base"> {rejected}</span> 
             <span className="font-semibold md:text-base text-sm text-gray-400">REJECTED</span>
           </div>
-          <div className="flex items-center space-x-3 mt-2 sm:mt-0">
+          <div className="flex items-center space-x-2 mt-2 sm:mt-0">
             <span className="font-bold md:text-3xl text-base">  {applicants.length} </span>
-             <span className="font-semibold md:text-base text-sm text-gray-400">Total</span>
+             <span className="font-semibold md:text-base text-sm text-gray-400">TOTAL</span>
           </div>
         </div>
         <div className={`h-1 my-2 rounded ${color}`}></div>
