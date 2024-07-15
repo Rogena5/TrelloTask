@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDrop } from 'react-dnd';
 import ApplicantCard from './ApplicantCard';
-import { FaSortAmountDown } from "react-icons/fa";
+import { FaSortAmountDown, FaSortAmountUp } from "react-icons/fa";
 
 const ApplicantList = ({ title, rejected, applicants, setApplicants, handleRemoveApplicant, moveCard, color }) => {
   const [showModal, setShowModal] = useState(false);
@@ -85,10 +85,10 @@ const ApplicantList = ({ title, rejected, applicants, setApplicants, handleRemov
         <div className="flex flex-wrap md:flex-row justify-between space-y-2 md:space-y-0 md:items-center mb-4">
           <div className="font-semibold text-base md:text-lg">{title}</div>
           <button className="text-blue-600 text-xs md:text-sm bg-blue-100 font-semibold px-2 py-1 rounded-xl" onClick={handleAddClick}>
-              + Add Applicants
-            </button>
-            <div onClick={handleSort} className="cursor-pointer">
-            <FaSortAmountDown />
+            + Add Applicants
+          </button>
+          <div onClick={handleSort} className="cursor-pointer">
+            {sortOrder === 'asc' ? <FaSortAmountDown /> : <FaSortAmountUp />}
           </div>
         </div>
 
